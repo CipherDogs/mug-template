@@ -2,7 +2,8 @@
 var height = 768;
 var width = 2126;
 var cloudWidth = width - height + 30;
-var logoSize = 500;
+var logo = new Image();
+logo.src = "clojure-logo.png";
 
 var randColor = function() {
     return Math.random() > 0.5 ? "#63b132" : "#5881d8";
@@ -22,9 +23,7 @@ function generate() {
 
 function drawWordCloud(words, c) {
     c.save();
-    var minX = 0;
-    words.forEach(function(word) { minX = Math.min(minX, word.x); })
-    c.translate(-minX, height >> 1);
+    c.translate(cloudWidth >> 1, height >> 1);
     words.forEach(function(word, i) {
         c.save();
         c.translate(word.x, word.y);
@@ -39,12 +38,16 @@ function drawWordCloud(words, c) {
 }
 
 function drawLogo(c) {
-    var img = new Image();
-    img.src = "clojure-logo.png";
-    var padding = (height - logoSize) / 2;
+    var padding = (height - logo.width) / 2;
     var x = width - height + padding;
     var y = padding;
-    c.drawImage(img, x, y);
+    c.drawImage(logo, x, y);
+}
+
+function downloadPNG() {
+    var canvas = document.getElementById("template");
+    var dataUrl = canvas.toDataURL("image/png");
+    d3.select("a").attr("href", dataUrl);
 }
 
 
@@ -55,10 +58,7 @@ function draw(words) {
     canvas.height = height;
     drawWordCloud(words, c);
     drawLogo(c);
-    var dataUrl = canvas.toDataURL("image/png");
-    d3.select("a")
-        .attr("href", dataUrl)
-        .classed("hidden", false);
+    d3.select("a").classed("hidden", false);
     d3.select("#template").classed("hidden", false);
 }
 
