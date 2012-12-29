@@ -9,9 +9,39 @@ var randColor = function() {
     return Math.random() > 0.5 ? "#63b132" : "#5881d8";
 };
 
+if (window.attachEvent) {
+    observe = function (element, event, handler) {
+        element.attachEvent('on'+event, handler);
+    };
+} else {
+    observe = function (element, event, handler) {
+        element.addEventListener(event, handler, false);
+    };
+}
+
+function onLoad() {
+    var words = document.getElementById('words');
+    function resize () {
+        words.style.height = 'auto';
+        words.style.height = words.scrollHeight+'px';
+    }
+    /* 0-timeout to get the already changed text */
+    function delayedResize () {
+        window.setTimeout(resize, 0);
+    }
+    observe(words, 'change',  resize);
+    observe(words, 'cut',     delayedResize);
+    observe(words, 'paste',   delayedResize);
+    observe(words, 'drop',    delayedResize);
+    observe(words, 'keydown', delayedResize);
+
+    words.value = allWordsToString();
+    resize();
+}
+
 function generate() {
     d3.layout.cloud().size([cloudWidth, height])
-        .words(words.map(function(d) {
+        .words(getWords().map(function(d) {
             return {text: d, size: 40 + Math.random() * 40};
         }))
         .rotate(function() { return ~~(Math.random() * 2) * 90; })
@@ -19,6 +49,23 @@ function generate() {
         .fontSize(function(d) { return d.size; })
         .on("end", draw)
         .start();
+}
+
+function getWords() {
+    var lines = document.getElementById("words")
+        .value
+        .split("\n")
+        .map(function(line) { return line.trim(); });
+    var words = [];
+    lines.forEach(function(line) {
+        if (line[0] === ";" || line.length === 0) {
+            return;
+        }
+        var parts = line.split(" ");
+        var filtered = parts.filter(function (word) { return word.length > 0; });
+        words = words.concat(filtered);
+    })
+    return words;
 }
 
 function drawWordCloud(words, c) {
@@ -35,6 +82,17 @@ function drawWordCloud(words, c) {
         c.restore();
     });
     c.restore();
+}
+
+function allWordsToString() {
+    return "; Misc\n"
+        + wordsMisc.join(" ")
+        + "\n\n"
+        + "; Libraries\n"
+        + wordsLibs.join(" ")
+        + "\n\n"
+        + "; Functions\n"
+        + wordsFns.join(" ");
 }
 
 function drawLogo(c) {
@@ -61,4 +119,5 @@ function draw(words) {
     d3.select("a").classed("hidden", false);
     d3.select("#template").classed("hidden", false);
 }
+
 

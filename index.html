@@ -6,13 +6,16 @@
     <script src="logic.js"></script>
     <link rel="stylesheet" href="styles.css"/>
 </head>
-<body>
-<button onclick="generate();">
-    Generate
-</button>
-<a href="#" target="_blank" onclick="downloadPNG();" class="hidden">
-    Download PNG
-</a>
+<body onload="onLoad();">
+<div id="buttons">
+    <button onclick="generate();">
+        Generate
+    </button>
+    <a href="#" target="_blank" onclick="downloadPNG();" class="hidden">
+        Download PNG
+    </a>
+</div>
+<textarea id="words"></textarea>
 <canvas id="template" class="hidden"/>
 </body>
 </html>

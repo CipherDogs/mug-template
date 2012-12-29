@@ -2,8 +2,19 @@
 #template {
     display: block;
     border: 1px solid black;
+    margin: 10px;
+}
+
+#words {
+    display: block;
+    width: 100%;
+    margin: 10px;
 }
 
 .hidden {
     visibility: hidden;
+}
+
+#buttons {
+    text-align: center;
 }
