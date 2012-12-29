@@ -1,67 +1,18 @@
-<script src="d3.js"></script>
-<script src="d3.layout.cloud.js"></script>
-<script src="words.js"></script>
+<html>
+<head>
+    <script src="d3.js"></script>
+    <script src="d3.layout.cloud.js"></script>
+    <script src="words.js"></script>
+    <script src="logic.js"></script>
+    <link rel="stylesheet" href="styles.css"/>
+</head>
 <body>
-<script>
-  var fill = d3.scale.category20();
-
-  var height = 768;
-  var width = 2126 - height + 30;
-  var randColor = function(k, i) {
-      return ["#63b132", "#5881d8"][Math.round(Math.random())];
-  };
-  var generated;
-
-  d3.layout.cloud().size([width, height])
-      .words(words.map(function(d) {
-        return {text: d, size: 40 + Math.random() * 40};
-      }))
-      .rotate(function() { return ~~(Math.random() * 2) * 90; })
-      .font("Impact")
-      .fontSize(function(d) { return d.size; })
-      .on("end", draw)
-      .start();
-
-  function downloadPNG() {
-      var canvas = document.createElement("canvas"),
-              c = canvas.getContext("2d");
-      canvas.width = width;
-      canvas.height = height;
-      c.translate(width >> 1, height >> 1);
-      generated.forEach(function(word, i) {
-          c.save();
-          c.translate(word.x, word.y);
-          c.rotate(word.rotate * Math.PI / 180);
-          c.textAlign = "center";
-          c.fillStyle = randColor();;
-          c.font = word.size + "px " + word.font;
-          c.fillText(word.text, 0, 0);
-          c.restore();
-      });
-      d3.select("a").attr("href", canvas.toDataURL("image/png"));
-  }
-
-
-  function draw(words) {
-      generated = words;
-    d3.select("body").append("svg")
-        .attr("width", width)
-        .attr("height", height)
-      .append("g")
-        .attr("transform", "translate(" + width / 2 + ", " + height / 2 + ")")
-      .selectAll("text")
-        .data(words)
-      .enter().append("text")
-        .style("font-size", function(d) { return d.size + "px"; })
-        .style("font-family", "Impact")
-        .style("fill", randColor)
-        .attr("text-anchor", "middle")
-        .attr("transform", function(d) {
-          return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
-        })
-        .text(function(d) { return d.text; });
-  }
-</script>
-<a href="#" onclick="downloadPNG();">
-    Download
+<button onclick="generate();">
+    Generate
+</button>
+<a href="#" target="_blank" class="hidden">
+    Download PNG
 </a>
+<canvas id="template" class="hidden"/>
+</body>
+</html>
