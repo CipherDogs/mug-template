@@ -68,20 +68,20 @@ function getWords() {
     return words;
 }
 
-function drawWordCloud(words, c) {
-    c.save();
-    c.translate(cloudWidth >> 1, height >> 1);
+function drawWordCloud(words, context) {
+    context.save();
+    context.translate(cloudWidth >> 1, height >> 1);
     words.forEach(function(word, i) {
-        c.save();
-        c.translate(word.x, word.y);
-        c.rotate(word.rotate * Math.PI / 180);
-        c.textAlign = "center";
-        c.fillStyle = randColor();
-        c.font = word.size + "px " + word.font;
-        c.fillText(word.text, 0, 0);
-        c.restore();
+        context.save();
+        context.translate(word.x, word.y);
+        context.rotate(word.rotate * Math.PI / 180);
+        context.textAlign = "center";
+        context.fillStyle = randColor();
+        context.font = word.size + "px " + word.font;
+        context.fillText(word.text, 0, 0);
+        context.restore();
     });
-    c.restore();
+    context.restore();
 }
 
 function allWordsToString() {
@@ -95,11 +95,11 @@ function allWordsToString() {
         + wordsFns.join(" ");
 }
 
-function drawLogo(c) {
+function drawLogo(context) {
     var padding = (height - logo.width) / 2;
     var x = width - height + padding;
     var y = padding;
-    c.drawImage(logo, x, y);
+    context.drawImage(logo, x, y);
 }
 
 function downloadPNG() {
@@ -111,11 +111,11 @@ function downloadPNG() {
 
 function draw(words) {
     var canvas = document.getElementById("template");
-    var c = canvas.getContext("2d");
+    var context = canvas.getContext("2d");
     canvas.width = width;
     canvas.height = height;
-    drawWordCloud(words, c);
-    drawLogo(c);
+    drawWordCloud(words, context);
+    drawLogo(context);
     d3.select("a").classed("hidden", false);
     d3.select("#template").classed("hidden", false);
 }
