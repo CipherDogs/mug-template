@@ -5,7 +5,7 @@ Automatic generation of mug printing templates for clojure
 
 [Try it](http://nbeloglazov.github.com/clojure-mug-template/)
 
-Based on [d3-cloud](www.jasondavies.com/wordcloud/)
+Based on [d3-cloud](http://www.jasondavies.com/wordcloud/)
 
 Notes
 -----
