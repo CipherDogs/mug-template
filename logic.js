@@ -1,12 +1,14 @@
 
 var height = 768;
 var width = 2126;
-var cloudWidth = width - height + 30;
+var cloudWidth = width - height;
 var logo = new Image();
 logo.src = "clojure-logo.png";
+var green = "#63b132";
+var blue = "#5881d8";
 
 var randColor = function() {
-    return Math.random() > 0.5 ? "#63b132" : "#5881d8";
+    return Math.random() > 0.5 ? green : blue;
 };
 
 if (window.attachEvent) {
@@ -21,19 +23,25 @@ if (window.attachEvent) {
 
 function onLoad() {
     var words = document.getElementById('words');
+    var message = document.getElementById('message');
+    var textareas = [words, message];
     function resize () {
-        words.style.height = 'auto';
-        words.style.height = words.scrollHeight+'px';
+        textareas.forEach(function(textarea) {
+            textarea.style.height = 'auto';
+            textarea.style.height = (textarea.scrollHeight + 10) +'px';
+        });
     }
     /* 0-timeout to get the already changed text */
     function delayedResize () {
         window.setTimeout(resize, 0);
     }
-    observe(words, 'change',  resize);
-    observe(words, 'cut',     delayedResize);
-    observe(words, 'paste',   delayedResize);
-    observe(words, 'drop',    delayedResize);
-    observe(words, 'keydown', delayedResize);
+    textareas.forEach(function(textarea) {
+        observe(textarea, 'change',  resize);
+        observe(textarea, 'cut',     delayedResize);
+        observe(textarea, 'paste',   delayedResize);
+        observe(textarea, 'drop',    delayedResize);
+        observe(textarea, 'keydown', delayedResize); 
+    });
 
     words.value = allWordsToString();
     resize();
@@ -64,7 +72,7 @@ function getWords() {
         var parts = line.split(" ");
         var filtered = parts.filter(function (word) { return word.length > 0; });
         words = words.concat(filtered);
-    })
+    });
     return words;
 }
 
@@ -95,11 +103,26 @@ function allWordsToString() {
         + wordsFns.join(" ");
 }
 
-function drawLogo(context) {
-    var padding = (height - logo.width) / 2;
-    var x = width - height + padding;
-    var y = padding;
-    context.drawImage(logo, x, y);
+function drawLogoAndMessage(context) {
+    var size = height;
+    var logoX = (size - logo.width) / 2;
+    var message = document.getElementById('message').value;
+    var lines = message.length > 0 ? message.split("\n") : [];
+    var lineHeight = 80;
+    var mesHeight = lines.length * lineHeight;
+    var topPadding = (size - logo.height - mesHeight) / (mesHeight > 0 ? 3 : 2);
+    var logoY = topPadding;
+    context.save();
+    context.translate(width - height, 0);
+    context.drawImage(logo, logoX, logoY);
+    context.textAlign = "center";
+    context.fillStyle = green;
+    context.font = "80px Impact";
+    lines.forEach(function(line, ind) {
+        var y = topPadding * 2 + logo.height + (ind + 1) * lineHeight;
+        context.fillText(line, size / 2, y);
+    });
+    context.restore();
 }
 
 function downloadPNG() {
@@ -115,7 +138,7 @@ function draw(words) {
     canvas.width = width;
     canvas.height = height;
     drawWordCloud(words, context);
-    drawLogo(context);
+    drawLogoAndMessage(context);
     d3.select("a").classed("hidden", false);
     d3.select("#template").classed("hidden", false);
 }

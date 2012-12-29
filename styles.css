@@ -5,11 +5,20 @@
     margin: 10px;
 }
 
-#words {
-    display: block;
-    width: 100%;
-    margin: 10px;
+#texts div {
+    width: 49%;
+    display: inline-block;
+    vertical-align: top;
 }
+
+#texts div * {
+    width: 100%;
+    margin: 5 10 5 10;
+}
+
+
+
+
 
 .hidden {
     visibility: hidden;
