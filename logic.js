@@ -9,6 +9,32 @@ var blue = "#5881d8";
 
 function cipher() {
     logo.src = "img/cipherdogs.png"
+    green = "#ffffff";
+    blue = "#000000";
+}
+
+function monero() {
+    logo.src = "img/monero.png";
+    green = "#4c4c4c";
+    blue = "#d26e2b";
+}
+
+function rust() {
+    logo.src = "img/rust.png";
+    green = "#ffc832";
+    blue = "#000000";
+}
+
+function emacs() {
+    logo.src = "img/emacs.png";
+    green = "#7F5AB6";
+    blue = "#F5F5ED";
+}
+
+function python() {
+    logo.src = "img/python.png";
+    green = "#ffd343";
+    blue = "#2b5b84";
 }
 
 var randColor = function() {
