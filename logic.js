@@ -4,8 +4,8 @@ var width = 2126;
 var cloudWidth = width - height;
 var logo = new Image();
 logo.src = "img/cipherdogs.png";
-var green = "#63b132";
-var blue = "#5881d8";
+var green = "#ffffff";
+var blue = "#000000";
 
 function cipher() {
     logo.src = "img/cipherdogs.png"
