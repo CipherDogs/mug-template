@@ -1,16 +1,15 @@
-
 var height = 768;
 var width = 2126;
 var cloudWidth = width - height;
 var logo = new Image();
 logo.src = "img/cipherdogs.png";
-var green = "#ffffff";
-var blue = "#ffffff";
+var green = "#000000";
+var blue = "#000000";
 
 function cipherdogs() {
     logo.src = "img/cipherdogs.png"
-    green = "#ffffff";
-    blue = "#ffffff";
+    green = "#000000";
+    blue = "#000000";
 }
 
 function monero() {
