@@ -7,7 +7,7 @@ logo.src = "img/cipherdogs.png";
 var green = "#ffffff";
 var blue = "#000000";
 
-function cipher() {
+function cipherdogs() {
     logo.src = "img/cipherdogs.png"
     green = "#ffffff";
     blue = "#000000";
@@ -21,8 +21,8 @@ function monero() {
 
 function rust() {
     logo.src = "img/rust.png";
-    green = "#ffc832";
-    blue = "#000000";
+    blue = "#ffc832";
+    green = "#000000";
 }
 
 function emacs() {
@@ -33,8 +33,8 @@ function emacs() {
 
 function python() {
     logo.src = "img/python.png";
-    green = "#ffd343";
-    blue = "#2b5b84";
+    blue = "#ffd343";
+    green = "#2b5b84";
 }
 
 var randColor = function() {
