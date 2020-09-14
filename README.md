@@ -3,7 +3,7 @@ mug-template
 
 Automatic generation of mug printing templates
 
-[Try it](http://nbeloglazov.github.io/clojure-mug-template/)
+[Try it](https://cipherdogs.net/mug-template/)
 
 Based on [d3-cloud](http://www.jasondavies.com/wordcloud/)
 
