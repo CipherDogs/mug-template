@@ -1,7 +1,7 @@
-clojure-mug-template
+mug-template
 ====================
 
-Automatic generation of mug printing templates for clojure
+Automatic generation of mug printing templates
 
 [Try it](http://nbeloglazov.github.io/clojure-mug-template/)
 
