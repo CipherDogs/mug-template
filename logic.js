@@ -5,12 +5,12 @@ var cloudWidth = width - height;
 var logo = new Image();
 logo.src = "img/cipherdogs.png";
 var green = "#ffffff";
-var blue = "#000000";
+var blue = "#ffffff";
 
 function cipherdogs() {
     logo.src = "img/cipherdogs.png"
     green = "#ffffff";
-    blue = "#000000";
+    blue = "#ffffff";
 }
 
 function monero() {
@@ -28,7 +28,7 @@ function rust() {
 function emacs() {
     logo.src = "img/emacs.png";
     green = "#7F5AB6";
-    blue = "#F5F5ED";
+    blue = "#3F3B3B";
 }
 
 function python() {
