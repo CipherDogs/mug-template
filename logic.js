@@ -3,9 +3,13 @@ var height = 768;
 var width = 2126;
 var cloudWidth = width - height;
 var logo = new Image();
-logo.src = "clojure-logo.png";
+logo.src = "img/cipherdogs.png";
 var green = "#63b132";
 var blue = "#5881d8";
+
+function cipher() {
+    logo.src = "img/cipherdogs.png"
+}
 
 var randColor = function() {
     return Math.random() > 0.5 ? green : blue;
