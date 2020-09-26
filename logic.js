@@ -36,6 +36,12 @@ function python() {
     green = "#2b5b84";
 }
 
+function cyber() {
+    logo.src = "img/cyber.png";
+    blue = "#000000";
+    green = "#36d6ae";
+}
+
 var randColor = function() {
     return Math.random() > 0.5 ? green : blue;
 };
