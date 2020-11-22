@@ -15,12 +15,14 @@ function cipherdogs() {
     logo.src = "img/cipherdogs.png"
     green = "#000000";
     blue = "#000000";
+    changeWords(cipherdogsWords);
 }
 
 function monero() {
     logo.src = "img/monero.png";
     green = "#4c4c4c";
     blue = "#d26e2b";
+    changeWords(moneroWords);
 }
 
 function rust() {
@@ -34,18 +36,21 @@ function emacs() {
     logo.src = "img/emacs.png";
     green = "#7F5AB6";
     blue = "#3F3B3B";
+    changeWords(emacsWords);
 }
 
 function python() {
     logo.src = "img/python.png";
     blue = "#ffd343";
     green = "#2b5b84";
+    changeWords(pythonWords);
 }
 
 function cyber() {
     logo.src = "img/cyber.png";
     blue = "#000000";
     green = "#36d6ae";
+    changeWords(cyberWords);
 }
 
 var randColor = function() {
