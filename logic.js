@@ -6,6 +6,11 @@ logo.src = "img/cipherdogs.png";
 var green = "#000000";
 var blue = "#000000";
 
+function changeWords(wordsList) {
+    var words = document.getElementById('words');
+    words.value = wordsList.join(" ");
+}
+
 function cipherdogs() {
     logo.src = "img/cipherdogs.png"
     green = "#000000";
@@ -22,6 +27,7 @@ function rust() {
     logo.src = "img/rust.png";
     blue = "#ffc832";
     green = "#000000";
+    changeWords(rustWords);
 }
 
 function emacs() {
