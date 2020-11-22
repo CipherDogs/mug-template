@@ -35,7 +35,19 @@ var cipherdogsWords = [
 
 var moneroWords = [
     "monero",
-    "pow"];
+    "pow",
+    "blockchain",
+    "CryptoNote",
+    "Ring signatures",
+    "Ring CT",
+    "Kovri",
+    "sub-address",
+    "seed",
+    "public view key",
+    "public spend key",
+    "private view key",
+    "private spend key",
+    "xmr"];
 
 var emacsWords = [
     "emacs",
@@ -164,4 +176,30 @@ var pythonWords = ["and",
   "django"];
 
 var cyberWords = [
-  "cyber"];
+  "cyber",
+  "blockchain",
+  "ipfs",
+  "cyb",
+  "euler",
+  "eul",
+  "fuckgoogle",
+  "cybercongress",
+  "cyberlinks",
+  "cyberlink",
+  "cosmos",
+  "hero",
+  "master",
+  "gol",
+  "Game of Links",
+  "Evangelist",
+  "tweet",
+  "go-cyber",
+  "dot-cyber",
+  "validator",
+  "testnet",
+  "GPU",
+  "Cosmos-SDK",
+  "cyberdcli",
+  "cyberd",
+  "government",
+  "Proposals"];
