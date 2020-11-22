@@ -139,14 +139,7 @@ function drawWordCloud(words, context) {
 }
 
 function allWordsToString() {
-    return "; Misc\n"
-        + wordsMisc.join(" ")
-        + "\n\n"
-        + "; Libraries\n"
-        + wordsLibs.join(" ")
-        + "\n\n"
-        + "; Functions\n"
-        + wordsFns.join(" ");
+    return cipherdogsWords.join(" ");
 }
 
 function drawLogoAndMessage(context) {
